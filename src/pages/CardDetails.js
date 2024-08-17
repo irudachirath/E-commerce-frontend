@@ -16,7 +16,7 @@ const CardDetailsPage = ({ id, city }) => {
   });
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/card-details/${id}`).then((response) => {
+    axios.get(`http://54.151.252.42/card-details/${id}`).then((response) => {
       const initialDataFromJSON = response.data[0];
       setCardData((prevData) => ({
         ...prevData,

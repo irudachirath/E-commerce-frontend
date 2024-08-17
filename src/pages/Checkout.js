@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   TextField,
   Button,
@@ -9,38 +9,36 @@ import {
   Select,
   MenuItem,
   Typography,
-} from '@mui/material';
-import CardDetailsPage from './CardDetails';
-import DeliveryPage from './Delivery';
+} from "@mui/material";
+import CardDetailsPage from "./CardDetails";
+import DeliveryPage from "./Delivery";
 
-const CheckoutPage = ({id}) => {
+const CheckoutPage = ({ id }) => {
   const [formData, setFormData] = useState({
-    First_name: '',
-    Last_name: '',
-    Email: '',
-    Phone_number: '',
-    Address_line1: '',
-    Address_line2: '',
-    City: '',
-    Province: '',
-    Zipcode: '',
-    PaymentMethod: 'Credit Card',
-    DeliveryMethod: 'Store Pickup'
+    First_name: "",
+    Last_name: "",
+    Email: "",
+    Phone_number: "",
+    Address_line1: "",
+    Address_line2: "",
+    City: "",
+    Province: "",
+    Zipcode: "",
+    PaymentMethod: "Credit Card",
+    DeliveryMethod: "Store Pickup",
   });
 
   let initialDataFromJSON = [];
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/checkout/${id}`)
-      .then((response) => {
-        initialDataFromJSON = response.data[0];
-        console.log(initialDataFromJSON);
-        //initialDataFromJSON.PaymentMethod = 'Credit Card';
-        //setFormData(initialDataFromJSON);
-        setFormData((prevData) => {
-          return { ...prevData, ...initialDataFromJSON };
-        });
+    axios.get(`http://54.151.252.42/checkout/${id}`).then((response) => {
+      initialDataFromJSON = response.data[0];
+      console.log(initialDataFromJSON);
+      //initialDataFromJSON.PaymentMethod = 'Credit Card';
+      //setFormData(initialDataFromJSON);
+      setFormData((prevData) => {
+        return { ...prevData, ...initialDataFromJSON };
       });
+    });
   }, [id]);
 
   const handleInputChange = (e) => {
@@ -54,10 +52,10 @@ const CheckoutPage = ({id}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add logic for handling the form submission, such as sending data to a server or processing payment.
-    if (formData.PaymentMethod === 'Credit Card') {
+    if (formData.PaymentMethod === "Credit Card") {
       setShowCardDetails(true);
       setShowDeliveyDays(false);
-    }else{
+    } else {
       setShowDeliveyDays(true);
       setShowCardDetails(false);
     }
@@ -65,8 +63,10 @@ const CheckoutPage = ({id}) => {
 
   return (
     <div>
-      <Typography variant="h5" textAlign="center" style={{marginTop:"5%"}}>Checkout</Typography>
-      <form onSubmit={handleSubmit} style={{margin:"3% 10%"}}>
+      <Typography variant="h5" textAlign="center" style={{ marginTop: "5%" }}>
+        Checkout
+      </Typography>
+      <form onSubmit={handleSubmit} style={{ margin: "3% 10%" }}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
@@ -186,24 +186,25 @@ const CheckoutPage = ({id}) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid container alignItems="center" justifyContent="center" margin="2%">
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="center"
+            margin="2%"
+          >
             <Button type="submit" variant="contained" color="primary">
               Submit
             </Button>
           </Grid>
         </Grid>
       </form>
-      {showCardDetails && <CardDetailsPage id={id} city={formData.City}/>}
-      {showDeliveyDays && <DeliveryPage customerId={id} city={formData.City}/>}
+      {showCardDetails && <CardDetailsPage id={id} city={formData.City} />}
+      {showDeliveyDays && <DeliveryPage customerId={id} city={formData.City} />}
     </div>
   );
-}
+};
 
 export default CheckoutPage;
-
-
-
-
 
 // import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';

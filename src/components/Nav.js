@@ -19,7 +19,7 @@ import Cookies from "js-cookie";
 const logout = async () => {
   try {
     const response = await axios.post(
-      "http://localhost:8000/logout",
+      "http://54.151.252.42/logout",
       {
         refreshToken: Cookies.get("refreshToken"),
       },
@@ -52,10 +52,11 @@ const NavBar = () => {
 
   useEffect(() => {
     let isMounted = true;
+    let customer_name = "User";
 
     // Fetch categories
     axios
-      .get("http://localhost:8000/main-categories/all")
+      .get("http://54.151.252.42/main-categories/all")
       .then((response) => {
         if (isMounted) {
           const data = response.data;
@@ -75,7 +76,7 @@ const NavBar = () => {
     // Fetch customer details
     if (id) {
       axios
-        .get(`http://localhost:8000/customers/${id}`)
+        .get(`http://54.151.252.42/customers/${id}`)
         .then((response) => {
           if (isMounted) {
             setCustomer(response.data[0]);
@@ -98,6 +99,11 @@ const NavBar = () => {
     }));
   };
 
+  const capitalizeFirstLetter = function (string) {
+    if (!string) return ""; // Return an empty string if input is undefined or empty
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   // Function to handle user actions (login/logout)
   const UserActions = () => {
     if (id && role === "customer") {
@@ -114,7 +120,7 @@ const NavBar = () => {
               paddingRight: "10px",
             }}
           >
-            Welcome, {customer.First_name}!
+            Welcome, {capitalizeFirstLetter(customer.First_name)}!
           </Typography>
           <Button
             variant="outlined"

@@ -13,7 +13,7 @@ const CustomerGuestPage = () => {
     City: "",
     Province: "",
     Zipcode: "",
-    Is_registered: 0
+    Is_registered: 0,
   });
 
   const handleChange = (e) => {
@@ -26,9 +26,10 @@ const CustomerGuestPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Send a POST request to the API with the form data
-    axios.post("http://localhost:8000/register", formData)
+    axios
+      .post("http://54.151.252.42/register", formData)
       .then((response) => {
         // Handle successful registration (e.g., show a success message)
         console.log("Registration successful:", response.data);
@@ -43,8 +44,7 @@ const CustomerGuestPage = () => {
     <div>
       <h1>Guest Details</h1>
       <form onSubmit={handleSubmit}>
-      <div>
-        </div>
+        <div></div>
         <div>
           <label>First Name:</label>
           <input

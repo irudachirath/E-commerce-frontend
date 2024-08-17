@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Typography,
-  Paper
-} from '@mui/material';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { Typography, Paper } from "@mui/material";
+import axios from "axios";
 
 const DeliveryPage = ({ city, customerId }) => {
   // State to store the total delivery days
@@ -12,7 +9,7 @@ const DeliveryPage = ({ city, customerId }) => {
   // Function to fetch data from the server
   const fetchData = async () => {
     axios
-      .get(`http://localhost:8000/delivery/${customerId}/${city}`)
+      .get(`http://54.151.252.42/delivery/${customerId}/${city}`)
       .then((response) => {
         console.log(response);
         const totalDays = response.data[0].days;
@@ -44,7 +41,12 @@ const DeliveryPage = ({ city, customerId }) => {
       <Typography variant="h6" gutterBottom textAlign="center">
         Total Delivery Days: {totalDeliveryDays}
       </Typography>
-      <Typography variant="subtitle1" gutterBottom textAlign="center" style={{marginBottom:'50px'}}>
+      <Typography
+        variant="subtitle1"
+        gutterBottom
+        textAlign="center"
+        style={{ marginBottom: "50px" }}
+      >
         Have a nice day! Come again.
       </Typography>
     </Paper>

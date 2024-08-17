@@ -11,7 +11,7 @@ const CustomerOrdersForm = () => {
   const years = Array.from({ length: 11 }, (_, index) => 2020 + index);
 
   useEffect(() => {
-    fetch("http://localhost:8000/customers")
+    fetch("http://54.151.252.42/customers")
       .then((response) => response.json())
       .then((data) => {
         setCustomers(data);
@@ -73,7 +73,7 @@ const CustomerOrdersForm = () => {
         </Grid>
       </Grid>
       <Grid container justifyContent="center" alignItems="center">
-        <a href={`http://localhost:3000/orders/${year}/${quarter}/${customer}`}>
+        <a href={`/orders/${year}/${quarter}/${customer}`}>
           <Button
             variant="contained"
             color="primary"

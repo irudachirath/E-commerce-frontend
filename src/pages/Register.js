@@ -89,7 +89,7 @@ const CustomerRegisterPage = () => {
     setLoading(true);
 
     axios
-      .post("http://localhost:8000/register", formData)
+      .post("http://54.151.252.42/register", formData)
       .then((response) => {
         setLoading(false);
         setShowSuccessMessage(true);

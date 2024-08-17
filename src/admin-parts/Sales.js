@@ -43,7 +43,7 @@ const SalesForm = () => {
         </Grid>
       </Grid>
       <Grid container justifyContent="center" alignItems="center">
-        <a href={`http://localhost:3000/sales/${year}/${quarter}`}>
+        <a href={`/sales/${year}/${quarter}`}>
           <Button
             variant="contained"
             color="primary"

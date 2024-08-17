@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Grid, Select, MenuItem, InputLabel } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { Button, Grid, Select, MenuItem, InputLabel } from "@mui/material";
 
 const ProductPopularTimeForm = () => {
   const [product, setProduct] = useState(0);
@@ -7,18 +7,18 @@ const ProductPopularTimeForm = () => {
 
   // Fetch product names from the API
   useEffect(() => {
-    fetch('http://localhost:8000/shop')
+    fetch("http://54.151.252.42/shop")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
       })
       .catch((error) => {
-        console.error('Error fetching products:', error);
+        console.error("Error fetching products:", error);
       });
   }, []);
 
   return (
-    <div style={{marginTop:"3%"}}>
+    <div style={{ marginTop: "3%" }}>
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item xs={12} sm={6}>
           <InputLabel>Product</InputLabel>
@@ -27,7 +27,7 @@ const ProductPopularTimeForm = () => {
             fullWidth
             value={product}
             onChange={(e) => {
-                setProduct(e.target.value)
+              setProduct(e.target.value);
             }}
           >
             {products.map((pro) => (
@@ -39,10 +39,14 @@ const ProductPopularTimeForm = () => {
         </Grid>
       </Grid>
       <Grid container justifyContent="center" alignItems="center">
-        <a href={`http://localhost:3000/orders/${product}`}>
-            <Button variant="contained" color="primary" style={{marginTop:"6%"}}>
+        <a href={`/orders/${product}`}>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ marginTop: "6%" }}
+          >
             Get Popular Time
-            </Button>
+          </Button>
         </a>
       </Grid>
     </div>

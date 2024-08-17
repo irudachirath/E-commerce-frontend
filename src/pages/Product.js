@@ -57,7 +57,7 @@ const ProductPage = () => {
   useEffect(() => {
     // Fetch product details from the API
     axios
-      .get(`http://localhost:8000/shop/${id}`)
+      .get(`http://54.151.252.42/shop/${id}`)
       .then((response) => {
         console.log(response);
         setProduct(response.data[0][0]);
@@ -73,7 +73,7 @@ const ProductPage = () => {
     setShowViewCart(true);
     axios
       .post(
-        `http://localhost:8000/cart/${id}/${itemID}/${quantityMap[itemID] || 1}`
+        `http://54.151.252.42/cart/${id}/${itemID}/${quantityMap[itemID] || 1}`
       )
       .then((response) => {
         if (response.status === 200) {
@@ -118,7 +118,7 @@ const ProductPage = () => {
               Price: ${product.Min_price}
             </Typography>
             {showViewCart && (
-              <a href={`http://localhost:3000/cart/${customer_id}`}>
+              <a href={`/cart/${customer_id}`}>
                 <Button>View Your Cart</Button>
               </a>
             )}

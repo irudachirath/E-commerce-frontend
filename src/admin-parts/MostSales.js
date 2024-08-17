@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
-import { Button, Grid, Select, MenuItem, InputLabel, TextField } from '@mui/material';
+import React, { useState } from "react";
+import {
+  Button,
+  Grid,
+  Select,
+  MenuItem,
+  InputLabel,
+  TextField,
+} from "@mui/material";
 
 const MostSalesForm = () => {
-  const [year, setYear] = useState('');
-  const [quarter, setQuarter] = useState('');
-  const [number, setNumber] = useState('');
+  const [year, setYear] = useState("");
+  const [quarter, setQuarter] = useState("");
+  const [number, setNumber] = useState("");
 
-  const quarters = ['1', '2', '3', '4'];
+  const quarters = ["1", "2", "3", "4"];
   const years = Array.from({ length: 11 }, (_, index) => 2020 + index);
 
   return (
-    <div style={{marginTop:"3%"}}>
+    <div style={{ marginTop: "3%" }}>
       <Grid container spacing={2}>
-      <Grid item xs={12} sm={6}>
-            <InputLabel>Year</InputLabel>
+        <Grid item xs={12} sm={6}>
+          <InputLabel>Year</InputLabel>
           <Select
             variant="outlined"
             fullWidth
@@ -28,7 +35,7 @@ const MostSalesForm = () => {
           </Select>
         </Grid>
         <Grid item xs={12} sm={6}>
-            <InputLabel>Quarter</InputLabel>
+          <InputLabel>Quarter</InputLabel>
           <Select
             variant="outlined"
             fullWidth
@@ -53,10 +60,14 @@ const MostSalesForm = () => {
         </Grid>
       </Grid>
       <Grid container justifyContent="center" alignItems="center">
-        <a href={`http://localhost:3000/sales/${year}/${quarter}/n/${number}`}>
-            <Button variant="contained" color="primary" style={{marginTop:"6%"}}>
+        <a href={`/sales/${year}/${quarter}/n/${number}`}>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ marginTop: "6%" }}
+          >
             Get Sales Data
-            </Button>
+          </Button>
         </a>
       </Grid>
     </div>

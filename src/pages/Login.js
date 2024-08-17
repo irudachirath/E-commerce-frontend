@@ -5,6 +5,7 @@ import { useUser } from "../components/UserContext";
 import { Button, TextField, Typography, Container, Alert } from "@mui/material";
 import { styled } from "@mui/system";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   display: "flex",
@@ -26,13 +27,14 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/login", {
+      const response = await axios.post("http://54.151.252.42/login", {
         email,
         password,
       });
       if (response.status >= 200 && response.status < 300) {
         const { ID, accessToken, refreshToken } = response.data;
-        Cookies.set("ID", ID);
+        Cookies.set("ID", jwtDecode(accessToken)["ID"]);
+        console.log(jwtDecode(accessToken));
         Cookies.set("role", "customer");
         Cookies.set("accessToken", accessToken);
         Cookies.set("refreshToken", refreshToken);

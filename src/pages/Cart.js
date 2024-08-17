@@ -24,7 +24,7 @@ const CartPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/cart/${id}`)
+      .get(`http://54.151.252.42/cart/${id}`)
       .then((response) => {
         const cartData = response.data;
         const total = cartData.reduce(
@@ -42,7 +42,7 @@ const CartPage = () => {
 
   const handleRemoveItem = (item, index) => {
     axios
-      .delete(`http://localhost:8000/cart/${id}/${item.item_id}`)
+      .delete(`http://54.151.252.42/cart/${id}/${item.item_id}`)
       .then((response) => {
         console.log(response.data.message); // Success message
         // Update UI after successful backend deletion

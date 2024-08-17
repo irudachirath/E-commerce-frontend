@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Grid, Select, MenuItem, InputLabel } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { Button, Grid, Select, MenuItem, InputLabel } from "@mui/material";
 
 const CategorySalesForm = () => {
-  const [year, setYear] = useState('');
-  const [quarter, setQuarter] = useState('');
+  const [year, setYear] = useState("");
+  const [quarter, setQuarter] = useState("");
   const [category, setCategory] = useState(0);
   const [categories, setCategories] = useState([]);
 
-  const quarters = ['1', '2', '3', '4'];
+  const quarters = ["1", "2", "3", "4"];
   const years = Array.from({ length: 11 }, (_, index) => 2020 + index);
 
   // Fetch category names from the API
   useEffect(() => {
-    fetch('http://localhost:8000/main-categories/all')
+    fetch("http://54.151.252.42/main-categories/all")
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
       })
       .catch((error) => {
-        console.error('Error fetching categories:', error);
+        console.error("Error fetching categories:", error);
       });
   }, []);
 
   return (
-    <div style={{marginTop:"3%"}}>
+    <div style={{ marginTop: "3%" }}>
       <Grid container spacing={2}>
-      <Grid item xs={12} sm={6}>
-            <InputLabel>Year</InputLabel>
+        <Grid item xs={12} sm={6}>
+          <InputLabel>Year</InputLabel>
           <Select
             variant="outlined"
             fullWidth
@@ -41,7 +41,7 @@ const CategorySalesForm = () => {
           </Select>
         </Grid>
         <Grid item xs={12} sm={6}>
-            <InputLabel>Quarter</InputLabel>
+          <InputLabel>Quarter</InputLabel>
           <Select
             variant="outlined"
             fullWidth
@@ -62,7 +62,7 @@ const CategorySalesForm = () => {
             fullWidth
             value={category}
             onChange={(e) => {
-                setCategory(e.target.value)
+              setCategory(e.target.value);
             }}
           >
             {categories.map((cat) => (
@@ -74,10 +74,14 @@ const CategorySalesForm = () => {
         </Grid>
       </Grid>
       <Grid container justifyContent="center" alignItems="center">
-        <a href={`http://localhost:3000/sales/${year}/${quarter}/c/${category}`}>
-            <Button variant="contained" color="primary" style={{marginTop:"6%"}}>
+        <a href={`/sales/${year}/${quarter}/c/${category}`}>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ marginTop: "6%" }}
+          >
             Get Sales Data
-            </Button>
+          </Button>
         </a>
       </Grid>
     </div>

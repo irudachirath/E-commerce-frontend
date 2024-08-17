@@ -10,6 +10,7 @@ import {
   Button,
 } from "@mui/material";
 import NavBar from "../components/Nav";
+import { Link } from "react-router-dom";
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +18,7 @@ const ShopPage = () => {
   useEffect(() => {
     // Fetch product data from the API when the component mounts
     axios
-      .get("http://localhost:8000/shop")
+      .get("http://54.151.252.42/shop")
       .then((response) => {
         console.log(response);
         setProducts(response.data); // Assuming the API returns an array of products
@@ -76,15 +77,11 @@ const ShopPage = () => {
                   <Typography variant="subtitle1" color="textSecondary">
                     ${product.Min_price}
                   </Typography>
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={() =>
-                      (window.location.href = `http://localhost:3000/shop/${product.Product_id}`)
-                    }
-                  >
-                    View Product
-                  </Button>
+                  <Link to={`/shop/${product.Product_id}`}>
+                    <Button variant="outlined" color="primary">
+                      View Product
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </div>
