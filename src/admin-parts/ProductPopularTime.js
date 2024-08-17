@@ -7,7 +7,7 @@ const ProductPopularTimeForm = () => {
 
   // Fetch product names from the API
   useEffect(() => {
-    fetch("http://54.151.252.42/shop")
+    fetch("https://e-commerce-backend-eight-green.vercel.app/shop")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);

@@ -89,7 +89,10 @@ const CustomerRegisterPage = () => {
     setLoading(true);
 
     axios
-      .post("http://54.151.252.42/register", formData)
+      .post(
+        "https://e-commerce-backend-eight-green.vercel.app/register",
+        formData
+      )
       .then((response) => {
         setLoading(false);
         setShowSuccessMessage(true);

@@ -9,7 +9,9 @@ const DeliveryPage = ({ city, customerId }) => {
   // Function to fetch data from the server
   const fetchData = async () => {
     axios
-      .get(`http://54.151.252.42/delivery/${customerId}/${city}`)
+      .get(
+        `https://e-commerce-backend-eight-green.vercel.app/delivery/${customerId}/${city}`
+      )
       .then((response) => {
         console.log(response);
         const totalDays = response.data[0].days;

@@ -24,7 +24,7 @@ const CartPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://54.151.252.42/cart/${id}`)
+      .get(`https://e-commerce-backend-eight-green.vercel.app/cart/${id}`)
       .then((response) => {
         const cartData = response.data;
         const total = cartData.reduce(
@@ -42,7 +42,9 @@ const CartPage = () => {
 
   const handleRemoveItem = (item, index) => {
     axios
-      .delete(`http://54.151.252.42/cart/${id}/${item.item_id}`)
+      .delete(
+        `https://e-commerce-backend-eight-green.vercel.app/cart/${id}/${item.item_id}`
+      )
       .then((response) => {
         console.log(response.data.message); // Success message
         // Update UI after successful backend deletion

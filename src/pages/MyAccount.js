@@ -21,7 +21,9 @@ const MyAccountPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://54.151.252.42/customers/${customer_id}`)
+      .get(
+        `https://e-commerce-backend-eight-green.vercel.app/customers/${customer_id}`
+      )
       .then((response) => {
         console.log(response);
         setCustomer(response.data[0]);

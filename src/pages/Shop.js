@@ -18,7 +18,7 @@ const ShopPage = () => {
   useEffect(() => {
     // Fetch product data from the API when the component mounts
     axios
-      .get("http://54.151.252.42/shop")
+      .get("https://e-commerce-backend-eight-green.vercel.app/shop")
       .then((response) => {
         console.log(response);
         setProducts(response.data); // Assuming the API returns an array of products

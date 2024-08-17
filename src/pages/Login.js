@@ -27,10 +27,13 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://54.151.252.42/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://e-commerce-backend-eight-green.vercel.app/login",
+        {
+          email,
+          password,
+        }
+      );
       if (response.status >= 200 && response.status < 300) {
         const { ID, accessToken, refreshToken } = response.data;
         Cookies.set("ID", jwtDecode(accessToken)["ID"]);

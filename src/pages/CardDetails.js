@@ -16,13 +16,17 @@ const CardDetailsPage = ({ id, city }) => {
   });
 
   useEffect(() => {
-    axios.get(`http://54.151.252.42/card-details/${id}`).then((response) => {
-      const initialDataFromJSON = response.data[0];
-      setCardData((prevData) => ({
-        ...prevData,
-        ...initialDataFromJSON,
-      }));
-    });
+    axios
+      .get(
+        `https://e-commerce-backend-eight-green.vercel.app/card-details/${id}`
+      )
+      .then((response) => {
+        const initialDataFromJSON = response.data[0];
+        setCardData((prevData) => ({
+          ...prevData,
+          ...initialDataFromJSON,
+        }));
+      });
   }, [id]);
 
   const handleInputChange = (e) => {

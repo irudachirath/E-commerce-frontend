@@ -29,7 +29,10 @@ const CustomerGuestPage = () => {
 
     // Send a POST request to the API with the form data
     axios
-      .post("http://54.151.252.42/register", formData)
+      .post(
+        "https://e-commerce-backend-eight-green.vercel.app/register",
+        formData
+      )
       .then((response) => {
         // Handle successful registration (e.g., show a success message)
         console.log("Registration successful:", response.data);

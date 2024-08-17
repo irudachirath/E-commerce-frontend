@@ -11,7 +11,7 @@ const CustomerOrdersForm = () => {
   const years = Array.from({ length: 11 }, (_, index) => 2020 + index);
 
   useEffect(() => {
-    fetch("http://54.151.252.42/customers")
+    fetch("https://e-commerce-backend-eight-green.vercel.app/customers")
       .then((response) => response.json())
       .then((data) => {
         setCustomers(data);

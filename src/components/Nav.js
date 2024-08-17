@@ -19,7 +19,7 @@ import Cookies from "js-cookie";
 const logout = async () => {
   try {
     const response = await axios.post(
-      "http://54.151.252.42/logout",
+      "https://e-commerce-backend-eight-green.vercel.app/logout",
       {
         refreshToken: Cookies.get("refreshToken"),
       },
@@ -56,7 +56,9 @@ const NavBar = () => {
 
     // Fetch categories
     axios
-      .get("http://54.151.252.42/main-categories/all")
+      .get(
+        "https://e-commerce-backend-eight-green.vercel.app/main-categories/all"
+      )
       .then((response) => {
         if (isMounted) {
           const data = response.data;
@@ -76,7 +78,9 @@ const NavBar = () => {
     // Fetch customer details
     if (id) {
       axios
-        .get(`http://54.151.252.42/customers/${id}`)
+        .get(
+          `https://e-commerce-backend-eight-green.vercel.app/customers/${id}`
+        )
         .then((response) => {
           if (isMounted) {
             setCustomer(response.data[0]);

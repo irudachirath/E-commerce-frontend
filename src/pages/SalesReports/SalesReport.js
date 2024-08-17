@@ -10,7 +10,9 @@ function SalesReportPage() {
   useEffect(() => {
     // Make an API request to http://localhost:8000/sales/:year/:quarter and fetch data
     // Replace this with your actual API call
-    fetch(`54.151.252.42/sales/${year}/${quarter}`)
+    fetch(
+      `https://e-commerce-backend-eight-green.vercel.app/sales/${year}/${quarter}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setData(data[0]);

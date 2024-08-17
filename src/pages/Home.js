@@ -21,9 +21,12 @@ const HomePage = () => {
 
   const refreshTokens = async () => {
     try {
-      const response = await axios.post("http://54.151.252.42/refresh", {
-        refreshToken: Cookies.get("refreshToken"),
-      });
+      const response = await axios.post(
+        "https://e-commerce-backend-eight-green.vercel.app/refresh",
+        {
+          refreshToken: Cookies.get("refreshToken"),
+        }
+      );
 
       if (response.status >= 200 && response.status < 300) {
         const { accessToken, refreshToken } = response.data;
@@ -51,7 +54,7 @@ const HomePage = () => {
   useEffect(() => {
     // Fetch main product categories from the API when the component mounts
     axios
-      .get("http://54.151.252.42/main-categories")
+      .get("https://e-commerce-backend-eight-green.vercel.app/main-categories")
       .then((response) => {
         console.log(response);
         setCategories(response.data); // Assuming the API returns an array of categories
@@ -61,7 +64,9 @@ const HomePage = () => {
       });
 
     axios
-      .get("http://54.151.252.42/main-categories/sub")
+      .get(
+        "https://e-commerce-backend-eight-green.vercel.app/main-categories/sub"
+      )
       .then((response) => {
         console.log(response);
         setSubCategories(response.data); // Assuming the API returns an array of categories

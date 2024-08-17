@@ -30,15 +30,17 @@ const CheckoutPage = ({ id }) => {
 
   let initialDataFromJSON = [];
   useEffect(() => {
-    axios.get(`http://54.151.252.42/checkout/${id}`).then((response) => {
-      initialDataFromJSON = response.data[0];
-      console.log(initialDataFromJSON);
-      //initialDataFromJSON.PaymentMethod = 'Credit Card';
-      //setFormData(initialDataFromJSON);
-      setFormData((prevData) => {
-        return { ...prevData, ...initialDataFromJSON };
+    axios
+      .get(`https://e-commerce-backend-eight-green.vercel.app/checkout/${id}`)
+      .then((response) => {
+        initialDataFromJSON = response.data[0];
+        console.log(initialDataFromJSON);
+        //initialDataFromJSON.PaymentMethod = 'Credit Card';
+        //setFormData(initialDataFromJSON);
+        setFormData((prevData) => {
+          return { ...prevData, ...initialDataFromJSON };
+        });
       });
-    });
   }, [id]);
 
   const handleInputChange = (e) => {

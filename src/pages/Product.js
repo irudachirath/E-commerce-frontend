@@ -57,7 +57,7 @@ const ProductPage = () => {
   useEffect(() => {
     // Fetch product details from the API
     axios
-      .get(`http://54.151.252.42/shop/${id}`)
+      .get(`https://e-commerce-backend-eight-green.vercel.app/shop/${id}`)
       .then((response) => {
         console.log(response);
         setProduct(response.data[0][0]);
@@ -73,7 +73,9 @@ const ProductPage = () => {
     setShowViewCart(true);
     axios
       .post(
-        `http://54.151.252.42/cart/${id}/${itemID}/${quantityMap[itemID] || 1}`
+        `https://e-commerce-backend-eight-green.vercel.app/cart/${id}/${itemID}/${
+          quantityMap[itemID] || 1
+        }`
       )
       .then((response) => {
         if (response.status === 200) {

@@ -12,7 +12,9 @@ const CategorySalesForm = () => {
 
   // Fetch category names from the API
   useEffect(() => {
-    fetch("http://54.151.252.42/main-categories/all")
+    fetch(
+      "https://e-commerce-backend-eight-green.vercel.app/main-categories/all"
+    )
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);

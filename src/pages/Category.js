@@ -20,7 +20,9 @@ const CategoryProducts = () => {
   useEffect(() => {
     // Fetch products belonging to the specified category from the API
     axios
-      .get(`http://54.151.252.42/main-categories/${id}`)
+      .get(
+        `https://e-commerce-backend-eight-green.vercel.app/main-categories/${id}`
+      )
       .then((response) => {
         console.log(response);
         setProducts(response.data); // Assuming the API returns an array of products
